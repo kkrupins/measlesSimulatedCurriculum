@@ -1,4 +1,3 @@
-test
 figure3 <- function(dat, qualCode, themeClass) {
   dat <- left_join(dat, qualCode) %>%
     select(type, id, primary, secondary, tertiary) %>%

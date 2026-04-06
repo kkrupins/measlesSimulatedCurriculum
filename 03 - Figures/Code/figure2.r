@@ -3,12 +3,12 @@ library(readxl)
 library(cowplot)
 library(ggpubr)
 
-source("./Functions/plot1a.r")
-source("./Functions/plot1b.r")
-source("./Functions/plot1c.r")
-source("./Functions/plot1d.r")
+source("./01 - Functions/plot1a.r")
+source("./01 - Functions/plot1b.r")
+source("./01 - Functions/plot1c.r")
+source("./01 - Functions/plot1d.r")
 
-dat <- read_excel("data_2026.xlsx") %>%
+dat <- read_excel("./02 - Input/data_2026.xlsx") %>%
   filter(consent == 1 & age == 1)
 
 allOptions <- tibble(answer = rep(c("A", "B", "C", "D", "E"), 2), type = c(rep("pre", 5), rep("post", 5)))
@@ -23,7 +23,7 @@ out <- plot_grid(plotlist = c(a, b, c, d), labels = "AUTO")
 ggsave(
   plot = out,
   bg = "white",
-  filename = "fig2.png",
+  filename = "./03 - Figures/Rendered/fig2.png",
   width = 13,
   height = 8
 )
