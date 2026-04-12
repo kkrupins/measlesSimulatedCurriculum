@@ -24,10 +24,10 @@ plot1d <- function() {
     geom_bar(stat = "identity", col = "black") +
     scale_fill_manual(
       values = c(
-        "pre, Correct" = "#41476b",
-        "post, Correct" = "#fbdfa2",
-        "pre, Incorrect" = "#41476b60",
-        "post, Incorrect" = "#fbdfa260"
+        "pre, Correct" = "#24492e",
+        "post, Correct" = "#e69b99",
+        "pre, Incorrect" = "#24492e60",
+        "post, Incorrect" = "#e69b9960"
       ),
       labels = c(
         "Pre-test, Correct",
@@ -40,6 +40,8 @@ plot1d <- function() {
                        labels = c("Correct", "Incorrect")) +
     guides(fill = guide_legend(title = NULL), alpha = guide_legend(title = NULL)) +
     coord_polar("y", start = 0) +
-    theme_void(base_size = 18)
+    theme_void(base_size = 18) +
+    theme(text = element_text(face = "bold"))
+  
   return(d)
 }

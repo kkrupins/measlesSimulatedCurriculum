@@ -12,6 +12,7 @@ plot1c <- function() {
     labs(y = "Confidence Level", x = "") +
     theme_bw(base_size = 18) +
     theme(legend.position = "none",
-          legend.position.inside = c(0, 1))
+          legend.position.inside = c(0, 1),
+          text = element_text(face = "bold"))
   return(c)
 }

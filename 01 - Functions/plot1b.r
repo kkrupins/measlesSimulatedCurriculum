@@ -18,11 +18,11 @@ plot1b <- function() {
     labs(y = "Frequency") +
     scale_fill_manual(
       values = c(
-        "A" = "#675478",
-        "B" = "#9e6374",
-        "C" = "#c67b6f",
-        "D" = "#de9b71",
-        "E" = "#efbc82"
+        "A" = "#015b58",
+        "B" = "#2c6184",
+        "C" = "#59629b",
+        "D" = "#89689d",
+        "E" = "#ba7999"
       )
     ) +
     scale_alpha_manual(values = c(0.2, 0.4, 0.6, 0.8, 1)) +
@@ -31,6 +31,10 @@ plot1b <- function() {
     guides(fill = guide_legend(reverse = TRUE)) +
     theme_bw(base_size = 18) +
     coord_flip() +
-    theme(legend.title = element_blank(), axis.title.y = element_blank())
+    theme(
+      legend.title = element_blank(),
+      axis.title.y = element_blank(),
+      text = element_text(face = "bold")
+    )
   return(d)
 }

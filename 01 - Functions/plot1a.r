@@ -28,10 +28,10 @@ plot1a <- function() {
     scale_y_continuous(limits = c(0, 11), breaks = seq(1, 11, 2)) +
     scale_fill_manual(
       values = c(
-        "pre, Correct" = "#41476b",
-        "post, Correct" = "#fbdfa2",
-        "pre, Incorrect" = "#41476b60",
-        "post, Incorrect" = "#fbdfa260"
+        "pre, Correct" = "#24492e",
+        "post, Correct" = "#e69b99",
+        "pre, Incorrect" = "#24492e60",
+        "post, Incorrect" = "#e69b9960"
       ),
       labels = c(
         "Pre-test, Correct",
@@ -45,7 +45,8 @@ plot1a <- function() {
     theme(
       legend.position = "inside",
       legend.position.inside = c(0.23, 0.78),
-      legend.spacing.y = unit(-0.3, "cm")
+      legend.spacing.y = unit(-0.3, "cm"),
+      text = element_text(face = "bold")
     )
   return(a)
 }
