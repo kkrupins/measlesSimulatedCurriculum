@@ -1,4 +1,4 @@
-plotWrittenResponse_lolipop <- function() {
+plot4 <- function() {
   dat2 <- dat %>%
     group_by(theme) %>%
     count() %>%
