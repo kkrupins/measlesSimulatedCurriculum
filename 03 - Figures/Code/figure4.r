@@ -1,7 +1,7 @@
 library(tidyverse)
 library(readxl)
 
-source("./01 - Functions/plotWrittenResponse_lolipop.r")
+source("./01 - Functions/plot4.R")
 
 dat <- read_excel("./02 - Input/Written Feedback/codedResponses_2026.xlsx") %>%
   select(id, primary, secondary, tertiary, quatrinary, quinary) %>%
@@ -9,7 +9,7 @@ dat <- read_excel("./02 - Input/Written Feedback/codedResponses_2026.xlsx") %>%
   select(id, theme) %>%
   na.omit()
 
-out <- plotWrittenResponse_lolipop()
+out <- plot4()
 
 ggsave(
   plot = out,
