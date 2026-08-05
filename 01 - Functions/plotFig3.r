@@ -1,4 +1,4 @@
-plotFig3 <- function(qualCode) {
+plot3 <- function(qualCode) {
   dat <- qualCode %>%
     gather(x, theme, -c(type, id)) %>%
     select(-x) %>%
