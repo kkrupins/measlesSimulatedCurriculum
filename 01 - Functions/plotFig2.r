@@ -1,3 +1,11 @@
+# ------------------------------------------------------------------------------
+# Title: Figure 2 Plotting Functions
+# Author: Katy Krupinsky
+# Updated: 08/05/26
+# Description: This code contains the functions to creates the plots seen within
+# Figure 2 of Krupinsky et al. 2026 JMBE
+# ------------------------------------------------------------------------------
+
 plot2a <- function(dat) {
   q1 <- dat %>%
     select(type, q1) %>%

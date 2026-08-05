@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------
+# Title: Figure 4 Plotting Functions
+# Author: Katy Krupinsky
+# Updated: 08/05/26
+# Description: This code contains the functions to creates the plots seen within
+# Figure 4 of Krupinsky et al. 2026 JMBE
+# ------------------------------------------------------------------------------
 plot4 <- function(dat) {
   dat2 <- dat %>%
     group_by(theme) %>%

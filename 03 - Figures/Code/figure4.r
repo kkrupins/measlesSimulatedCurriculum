@@ -1,3 +1,11 @@
+# ------------------------------------------------------------------------------
+# Title: Figure 4
+# Author: Katy Krupinsky
+# Updated: 08/05/26
+# Description: This file contains the code to create Figure 4 of Krupinsky et al.
+# 2026 JMBE
+# ------------------------------------------------------------------------------
+
 library(tidyverse)
 library(readxl)
 

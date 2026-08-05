@@ -1,5 +1,13 @@
 library(tidyverse)
 library(readxl)
+# ------------------------------------------------------------------------------
+# Title: Figure 2
+# Author: Katy Krupinsky
+# Updated: 08/05/26
+# Description: This file contains the code to create Figure 2 of Krupinsky et al.
+# 2026 JMBE
+# ------------------------------------------------------------------------------
+
 library(cowplot)
 library(ggpubr)
 

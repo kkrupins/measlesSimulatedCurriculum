@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------
+# Title: Figure 3 Plotting Functions
+# Author: Katy Krupinsky
+# Updated: 08/05/26
+# Description: This code contains the functions to creates the plots seen within
+# Figure 3 of Krupinsky et al. 2026 JMBE
+# ------------------------------------------------------------------------------
 plot3 <- function(qualCode) {
   dat <- qualCode %>%
     gather(x, theme, -c(type, id)) %>%
