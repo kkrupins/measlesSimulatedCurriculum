@@ -1,4 +1,4 @@
-plot4 <- function() {
+plot4 <- function(dat) {
   dat2 <- dat %>%
     group_by(theme) %>%
     count() %>%

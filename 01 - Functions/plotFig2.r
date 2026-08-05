@@ -1,4 +1,4 @@
-plot2a <- function() {
+plot2a <- function(dat) {
   q1 <- dat %>%
     select(type, q1) %>%
     rename(answer = q1) %>%
@@ -50,7 +50,7 @@ plot2a <- function() {
     )
   return(a)
 }
-plot2b <- function() {
+plot2b <- function(dat) {
   q2 <- dat %>%
     select(q2, type) %>%
     rename(answer = q2) %>%
@@ -90,7 +90,7 @@ plot2b <- function() {
     )
   return(d)
 }
-plot2c <- function() {
+plot2c <- function(dat) {
   c <- dat %>%
     ggplot(aes(
       x = factor(type, levels = c("pre", "post")),
@@ -108,7 +108,7 @@ plot2c <- function() {
           text = element_text(face = "bold"))
   return(c)
 }
-plot2d <- function() {
+plot2d <- function(dat) {
   q4 <- dat %>%
     select(q4, type) %>%
     rename(answer = q4) %>%

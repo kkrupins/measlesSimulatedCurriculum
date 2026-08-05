@@ -10,10 +10,10 @@ dat <- read_excel("./02 - Input/Survey Data/data_2026.xlsx") %>%
 
 allOptions <- tibble(answer = rep(c("A", "B", "C", "D", "E"), 2), type = c(rep("pre", 5), rep("post", 5)))
 
-a <- plot2a()
-b <- plot2b()
-c <- plot2c()
-d <- plot2d()
+a <- plot2a(dat)
+b <- plot2b(dat)
+c <- plot2c(dat)
+d <- plot2d(dat)
 
 out <- plot_grid(plotlist = c(a, b, c, d), labels = "AUTO")
 

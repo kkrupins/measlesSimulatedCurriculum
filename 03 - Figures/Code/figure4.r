@@ -9,7 +9,7 @@ dat <- read_excel("./02 - Input/Written Feedback/codedResponses_2026.xlsx") %>%
   select(id, theme) %>%
   na.omit()
 
-out <- plot4()
+out <- plot4(dat)
 
 ggsave(
   plot = out,
