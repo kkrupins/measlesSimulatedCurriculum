@@ -9,7 +9,7 @@ plot4 <- function() {
         "Worksheet inclusion",
         "Lecturer knowledge & enthusiasm",
         "Taking on the role of a professional",
-        "Interactive componenets",
+        "Interactive components",
         "Breakout rooms/share-out time",
         "Real-world problem solving",
         "Lecture format/organization"

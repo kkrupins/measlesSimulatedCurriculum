@@ -1,6 +1,5 @@
-plotQ5_duelBars <- function(dat, qualCode, themeClass) {
-  dat <- left_join(dat, qualCode) %>%
-    select(type, id, primary, secondary, tertiary) %>%
+plotFig3 <- function(qualCode) {
+  dat <- qualCode %>%
     gather(x, theme, -c(type, id)) %>%
     select(-x) %>%
     na.omit() %>%
@@ -17,52 +16,40 @@ plotQ5_duelBars <- function(dat, qualCode, themeClass) {
   
   dat <- dat %>%
     full_join(allOptions) %>%
-    mutate(n = ifelse(is.na(n), 0, n))
-  
-  dat2 <- dat %>%
-    mutate(n = ifelse(type == "pre", -n, n)) %>%
-    full_join(themeClass) %>%
+    mutate(n = ifelse(is.na(n), 0, n)) %>%
     mutate(theme = factor(
       theme,
       levels = c(
+        "Surveillance",
+        "Communicate scientific findings",
         "Decrease misinformation",
         "Transparency",
         "Public education",
         "Avoid future outbreaks",
-        "Longterm improvement",
-        "Communicate scientific findings",
-        "Surveillance"
+        "Longterm improvement"
       )
-    ),
-    audience = factor(audience, levels = c("professional", "both", "public")))
+    ))
   
-  out <- dat2 %>%
+  out <- dat %>%
     ggplot(aes(
       y = theme,
       x = n,
-      alpha = audience,
       fill = type,
       col = type
     )) +
-    geom_col(position = "identity") +
-    geom_vline(xintercept = 0) +
-    scale_fill_manual(values = c("#e69b99", "#24492e")) +
-    scale_color_manual(values = c("#e69b99", "#24492e")) +
-    scale_x_continuous(
-      limits = c(-8, 8),
-      breaks = seq(-8, 8, 2),
-      labels = c(seq(8, 0, -2), seq(2, 8, 2))
+    geom_col() +
+    scale_fill_manual(
+      values = c("#e69b99", "#24492e"),
+      labels = c("Post-test", "Pre-test")
     ) +
-    scale_alpha_manual(values = c(0, 0.5, 1),
-                       labels = c("Professionals", "Both", "General Public")) +
-    labs(x = "Number of mentions",
-         y = element_blank(),
-         subtitle = "                                Pre-test                                                   Post-test") +
-    guides(fill = "none", color = "none", alpha = guide_legend(title = "Audience", override.aes = list(color = "black"))) +
+    scale_color_manual(values = c("#e69b99", "#24492e")) +
+    scale_x_continuous(limits = c(0, 14), breaks = seq(0, 14, 2)) +
+    labs(x = "Number of mentions", y = element_blank()) +
+    guides(fill = guide_legend(title = element_blank()), color = "none") +
     theme_bw(base_size = 18) +
     theme(
       legend.position = "inside",
-      legend.position.inside = c(0.88, 0.12),
+      legend.position.inside = c(0.91, 0.075),
       legend.background = element_rect(color = "black", linewidth = 0.5),
       text = element_text(face = "bold")
     )
