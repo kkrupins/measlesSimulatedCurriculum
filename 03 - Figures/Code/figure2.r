@@ -28,7 +28,15 @@ out <- plot_grid(plotlist = c(a, b, c, d), labels = "AUTO")
 ggsave(
   plot = out,
   bg = "white",
-  filename = "./03 - Figures/Rendered/fig2.png",
+  filename = "./03 - Figures/Rendered/png/fig2.png",
+  width = 13,
+  height = 8
+)
+
+ggsave(
+  plot = out,
+  bg = "white",
+  filename = "./03 - Figures/Rendered/tiff/fig2.tiff",
   width = 13,
   height = 8
 )

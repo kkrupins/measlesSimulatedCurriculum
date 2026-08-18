@@ -20,7 +20,15 @@ out <- plot3(qualCode)
 ggsave(
   plot = out,
   bg = "white",
-  filename = "./03 - Figures/Rendered/fig3.png",
+  filename = "./03 - Figures/Rendered/png/fig3.png",
+  width = 13,
+  height = 8
+)
+
+ggsave(
+  plot = out,
+  bg = "white",
+  filename = "./03 - Figures/Rendered/tiff/fig3.tiff",
   width = 13,
   height = 8
 )
