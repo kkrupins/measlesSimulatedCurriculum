@@ -15,44 +15,29 @@ plot2a <- function(dat) {
     full_join(allOptions) %>%
     arrange(answer) %>%
     mutate(answer_val = ifelse(answer == "E", "Correct", "Incorrect")) %>%
-    mutate(fill_new = paste(type, answer_val, sep = ", "))
+    mutate(fill_new = paste(type, answer_val, sep = ", ")) %>% 
+    mutate(type = factor(type, levels = c("pre", "post"), labels = c("Pre-test", "Post-test")))
   
   a <- q1 %>%
     ggplot(mapping = aes(
       x = answer,
       y = n,
-      fill = factor(
-        fill_new,
-        levels = c(
-          "pre, Correct",
-          "pre, Incorrect",
-          "post, Correct",
-          "post, Incorrect"
-        )
-      )
-    )) +
+      fill = answer_val)) +
     geom_col(position = position_dodge2(width = 0.5), col = "black") +
+    facet_wrap(vars(type), nrow = 2) +
     labs(x = "Answer choice", y = "Frequency") +
     scale_y_continuous(limits = c(0, 11), breaks = seq(1, 11, 2)) +
     scale_fill_manual(
       values = c(
-        "pre, Correct" = "#24492e",
-        "post, Correct" = "#e69b99",
-        "pre, Incorrect" = "#24492e60",
-        "post, Incorrect" = "#e69b9960"
-      ),
-      labels = c(
-        "Pre-test, Correct",
-        "Pre-test, Incorrect",
-        "Post-test, Correct",
-        "Post-test, Incorrect"
+        "Correct" = "#CE4441FF",
+        "Incorrect" = "#E3ABA7FF"
       )
     ) +
     guides(fill = guide_legend(title = NULL)) +
     theme_bw(base_size = 18) +
     theme(
       legend.position = "inside",
-      legend.position.inside = c(0.23, 0.78),
+      legend.position.inside = c(0.14, 0.86),
       legend.spacing.y = unit(-0.3, "cm"),
       text = element_text(face = "bold")
     )
@@ -78,12 +63,11 @@ plot2b <- function(dat) {
     labs(y = "Frequency") +
     scale_fill_manual(
       values = c(
-        "A" = "#015b58",
-        "B" = "#2c6184",
-        "C" = "#59629b",
-        "D" = "#89689d",
-        "E" = "#ba7999"
-      )
+        "A" = "#EFC86EFF",
+        "B" = "#6F9969FF",
+        "C" = "#AADCE0FF",
+        "D" = "#808FE1FF",
+        "E" = "#0A2E57FF")
     ) +
     scale_alpha_manual(values = c(0.2, 0.4, 0.6, 0.8, 1)) +
     scale_x_discrete(labels = c("Post-test", "Pre-test")) +
@@ -100,20 +84,17 @@ plot2b <- function(dat) {
 }
 plot2c <- function(dat) {
   c <- dat %>%
-    ggplot(aes(
-      x = factor(type, levels = c("pre", "post")),
-      y = q3
-    )) +
+    ggplot(aes(x = factor(type, levels = c("pre", "post")), y = q3)) +
     geom_boxplot(alpha = 0.2, fill = "grey") +
-    stat_compare_means(comparisons = list(c("pre", "post")),
-                       label = "p.signif", size = 8, vjust = 0.4, bracket.size = 1) +
     scale_y_continuous(limits = c(1, 5.5)) +
     scale_x_discrete(labels = c("Pre-test", "Post-test")) +
     labs(y = "Confidence Level", x = "") +
     theme_bw(base_size = 18) +
-    theme(legend.position = "none",
-          legend.position.inside = c(0, 1),
-          text = element_text(face = "bold"))
+    theme(
+      legend.position = "none",
+      legend.position.inside = c(0, 1),
+      text = element_text(face = "bold")
+    )
   return(c)
 }
 plot2d <- function(dat) {
@@ -122,43 +103,26 @@ plot2d <- function(dat) {
     rename(answer = q4) %>%
     mutate(answer = ifelse(answer == "B", "Correct", "Incorrect")) %>%
     group_by(answer, type) %>%
-    count() %>%
-    mutate(fill_new = paste(type, answer, sep = ", "))
+    count() 
   
   d <- q4 %>%
     ggplot(mapping = aes(
       x = factor(type, levels = c("pre", "post")),
-      fill = factor(
-        fill_new,
-        levels = c(
-          "pre, Correct",
-          "pre, Incorrect",
-          "post, Correct",
-          "post, Incorrect"
-        )
-      ),
+      fill = answer,
       y = n
     )) +
     geom_bar(stat = "identity", col = "black") +
     scale_fill_manual(
       values = c(
-        "pre, Correct" = "#24492e",
-        "post, Correct" = "#e69b99",
-        "pre, Incorrect" = "#24492e60",
-        "post, Incorrect" = "#e69b9960"
-      ),
-      labels = c(
-        "Pre-test, Correct",
-        "Pre-test, Incorrect",
-        "Post-test, Correct",
-        "Post-test, Incorrect"
+        "Correct" = "#CE4441FF",
+        "Incorrect" = "#E3ABA7FF"
       )
     ) +
-    scale_alpha_manual(values = c(1, 0.2),
-                       labels = c("Correct", "Incorrect")) +
-    guides(fill = guide_legend(title = NULL), alpha = guide_legend(title = NULL)) +
-    coord_polar("y", start = 0) +
-    theme_void(base_size = 18) +
+    scale_x_discrete(labels = c("Pre-test", "Post-test")) +
+    scale_y_continuous(limits = c(0, 11), breaks = c(seq(1, 11, 2))) +
+    labs(y = "Frequency", x = "") +
+    guides(fill = guide_legend(title = NULL)) +
+    theme_bw(base_size = 18) +
     theme(text = element_text(face = "bold"))
   
   return(d)

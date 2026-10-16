@@ -10,11 +10,11 @@ plot4 <- function(dat) {
     group_by(theme) %>%
     count() %>%
     arrange(-n) %>%
+    filter(theme != "Lecturer knowledge & enthusiasm") %>% 
     mutate(theme = factor(
       theme,
       levels = c(
         "Worksheet inclusion",
-        "Lecturer knowledge & enthusiasm",
         "Taking on the role of a professional",
         "Interactive components",
         "Breakout rooms/share-out time",
@@ -33,7 +33,7 @@ plot4 <- function(dat) {
       xend = n
     ),
     linewidth = 1) +
-    geom_point(aes(x = n, y = theme), size = 5, col = "#89589d") +
+    geom_point(aes(x = n, y = theme), size = 5, col = "black") +
     scale_x_continuous(limits = c(0, 8)) +
     labs(x = "Number of mentions", y = element_blank()) +
     theme_bw(base_size = 18) +

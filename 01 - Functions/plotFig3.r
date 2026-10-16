@@ -46,10 +46,10 @@ plot3 <- function(qualCode) {
     )) +
     geom_col() +
     scale_fill_manual(
-      values = c("#e69b99", "#24492e"),
+      values = c("#59385CFF", "#AB84A5FF"),
       labels = c("Post-test", "Pre-test")
     ) +
-    scale_color_manual(values = c("#e69b99", "#24492e")) +
+    scale_color_manual(values = c("#59385CFF", "#AB84A5FF")) +
     scale_x_continuous(limits = c(0, 14), breaks = seq(0, 14, 2)) +
     labs(x = "Number of mentions", y = element_blank()) +
     guides(fill = guide_legend(title = element_blank()), color = "none") +
